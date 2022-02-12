@@ -1,8 +1,20 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { Form, Button } from "react-bootstrap";
 import styles from "../styles/pages/AddNft.module.css";
+import Axios from "../helpers/axios";
 
 const AddNft: React.FC = () => {
+  const [formData, setFormData] = React.useState({
+    name: "",
+    image: "",
+    description: "",
+  });
+
+  const handleMinting = async (event: FormEvent) => {
+    event.preventDefault();
+    console.log(formData);
+  };
+
   return (
     <div className={styles.AddNftContainer}>
       <section className={styles.HeaderContainer}>
@@ -21,17 +33,47 @@ const AddNft: React.FC = () => {
       <Form className={styles.FormContainer}>
         <Form.Group className="mb-3" controlId="formBasicText">
           <Form.Label>Title</Form.Label>
-          <Form.Control type="email" placeholder="Hakuna Matata" />
+          <Form.Control
+            type="text"
+            placeholder="Hakuna Matata"
+            value={formData.name}
+            onChange={(e) =>
+              setFormData((prev: any) => ({
+                ...prev,
+                name: e.target.value,
+              }))
+            }
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicText">
           <Form.Label>Image URL</Form.Label>
-          <Form.Control type="email" placeholder="https://someimage.com" />
+          <Form.Control
+            type="text"
+            placeholder="https://someimage.com"
+            value={formData.image}
+            onChange={(e) =>
+              setFormData((prev: any) => ({
+                ...prev,
+                image: e.target.value,
+              }))
+            }
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicText">
           <Form.Label>Description</Form.Label>
-          <Form.Control type="email" placeholder="This is an nft..." />
+          <Form.Control
+            type="text"
+            placeholder="This is an nft..."
+            value={formData.description}
+            onChange={(e) =>
+              setFormData((prev: any) => ({
+                ...prev,
+                description: e.target.value,
+              }))
+            }
+          />
         </Form.Group>
-        <Button variant="success" type="submit">
+        <Button variant="success" type="submit" onClick={handleMinting}>
           Mint
         </Button>
       </Form>
