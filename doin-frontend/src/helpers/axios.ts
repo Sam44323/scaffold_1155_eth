@@ -9,7 +9,7 @@ const PinataAxios = axios.create({
 });
 
 const NftPortAxios = axios.create({
-  baseURL: "https://api.nftport.xyz/v0/mints/easy",
+  baseURL: "https://api.nftport.xyz/v0/mints",
   headers: {
     Authorization: process.env.REACT_APP_NFTPORT_API!,
   },

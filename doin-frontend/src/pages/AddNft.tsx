@@ -33,7 +33,7 @@ const AddNft: React.FC = () => {
       toast.info("NFT minting in progress...", {
         autoClose: false,
       });
-      response = await NftPortAxios.post("/urls", {
+      response = await NftPortAxios.post("/easy/urls", {
         chain: "rinkeby",
         name: formData.name,
         description: formData.description,
