@@ -47,6 +47,14 @@ const Header: React.FC = () => {
           >
             User
           </Nav.Link>
+          <Nav.Link
+            onClick={() => navigate("/add")}
+            style={{
+              color: "white",
+            }}
+          >
+            Add
+          </Nav.Link>
         </Nav>
       </Container>
       <Container className="justify-content-end flex-grow-1 pe-3">
