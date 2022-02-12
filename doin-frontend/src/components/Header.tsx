@@ -36,14 +36,6 @@ const Header: React.FC = () => {
               color: "white",
             }}
           >
-            Explore
-          </Nav.Link>
-          <Nav.Link
-            onClick={() => navigate("/user")}
-            style={{
-              color: "white",
-            }}
-          >
             User
           </Nav.Link>
           <Nav.Link

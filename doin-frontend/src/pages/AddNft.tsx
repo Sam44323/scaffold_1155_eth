@@ -33,12 +33,17 @@ const AddNft: React.FC = () => {
       toast.info("NFT minting in progress...", {
         autoClose: false,
       });
-      response = await NftPortAxios.post("/easy/urls", {
+      response = await NftPortAxios.post("/mints/customizable/batch", {
         chain: "rinkeby",
-        name: formData.name,
-        description: formData.description,
-        file_url: `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`,
-        mint_to_address: account!,
+        contract_address: "0x9601741A28Db620a9cA192042f01462E3bcCC38A",
+        tokens: [
+          {
+            metadata_uri: `${response.data.IpfsHash}`,
+            mint_to_address: account!,
+            token_id: Math.round(Math.random() * 1000),
+            quantity: 1,
+          },
+        ],
       });
       console.log("NFT", response.data);
       toast.dismiss();
