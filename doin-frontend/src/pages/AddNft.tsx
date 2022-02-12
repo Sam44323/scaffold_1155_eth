@@ -16,7 +16,7 @@ const AddNft: React.FC = () => {
     try {
     } catch (err) {
       console.log(err);
-      toast.error("Error while pinning the metadata!");
+      toast.error("Error while pinning the metadata for NFT!");
       setFormData({
         name: "",
         image: "",
