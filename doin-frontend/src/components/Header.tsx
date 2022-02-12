@@ -1,7 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
-import { useEthers, useTokenBalance } from "@usedapp/core";
-import { formatEther } from "@ethersproject/units";
+import { useEthers } from "@usedapp/core";
 import { toast } from "react-toastify";
 
 const Header: React.FC = () => {
@@ -12,10 +11,10 @@ const Header: React.FC = () => {
   // storing the balance shown in the header
 
   React.useEffect(() => {
-    if (chainId === 4 || chainId === 97) {
-      setAccountData(account);
-    }
+    setAccountData(account);
   }, [account, chainId]);
+
+  React.useEffect(() => activateBrowserWallet(), [activateBrowserWallet]);
 
   console.log(accountData);
 

@@ -4,13 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ChainId, Config, DAppProvider } from "@usedapp/core";
+import { ChainId, Config, DAppProvider, Rinkeby } from "@usedapp/core";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter } from "react-router-dom";
 
 const config: Config = {
-  supportedChains: [ChainId.Rinkeby, 97],
+  networks: [Rinkeby],
   notifications: {
     expirationPeriod: 1000,
     checkInterval: 1000,
