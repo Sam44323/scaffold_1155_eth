@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import styles from "../styles/pages/AddNft.module.css";
 import Axios from "../helpers/axios";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const AddNft: React.FC = () => {
   const [formData, setFormData] = React.useState({
@@ -14,6 +15,20 @@ const AddNft: React.FC = () => {
   const handleMinting = async (event: FormEvent) => {
     event.preventDefault();
     try {
+      toast.info("Minting...");
+
+      const response = await Axios.post(
+        "/pinJSONToIPFS",
+        JSON.stringify(formData)
+      );
+      console.log("Response", response);
+      toast.dismiss();
+      toast.success("Pinned the metadata to IPFS!");
+      setFormData({
+        name: "",
+        image: "",
+        description: "",
+      });
     } catch (err) {
       console.log(err);
       toast.error("Error while pinning the metadata for NFT!");
