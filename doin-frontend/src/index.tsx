@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ChainId, Config, DAppProvider } from "@usedapp/core";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter } from "react-router-dom";
 
 const config: Config = {
   supportedChains: [ChainId.Rinkeby, 97],
@@ -19,9 +20,11 @@ const config: Config = {
 ReactDOM.render(
   <React.StrictMode>
     <ToastContainer />
-    <DAppProvider config={config}>
-      <App />
-    </DAppProvider>
+    <BrowserRouter>
+      <DAppProvider config={config}>
+        <App />
+      </DAppProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
