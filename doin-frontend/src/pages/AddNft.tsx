@@ -2,6 +2,7 @@ import React, { FormEvent } from "react";
 import { Form, Button } from "react-bootstrap";
 import styles from "../styles/pages/AddNft.module.css";
 import Axios from "../helpers/axios";
+import { toast } from "react-toastify";
 
 const AddNft: React.FC = () => {
   const [formData, setFormData] = React.useState({
@@ -12,7 +13,16 @@ const AddNft: React.FC = () => {
 
   const handleMinting = async (event: FormEvent) => {
     event.preventDefault();
-    console.log(formData);
+    try {
+    } catch (err) {
+      console.log(err);
+      toast.error("Error while pinning the metadata!");
+      setFormData({
+        name: "",
+        image: "",
+        description: "",
+      });
+    }
   };
 
   return (
