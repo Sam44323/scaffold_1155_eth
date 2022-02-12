@@ -23,7 +23,7 @@ const Explore: React.FC = () => {
           {[0, 1, 2, 3, 4, 5].map((i) => (
             <Card
               style={{
-                margin: "1.7rem 0",
+                margin: "1.7rem 0px",
               }}
             >
               <Card.Img
