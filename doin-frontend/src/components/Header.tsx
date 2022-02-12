@@ -22,7 +22,6 @@ const Header: React.FC = () => {
     <Navbar bg="dark" expand="xxl">
       <Container>
         <Navbar.Brand
-          onClick={() => navigate("/")}
           style={{
             color: "#fff",
           }}
