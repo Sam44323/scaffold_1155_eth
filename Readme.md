@@ -5,7 +5,6 @@
 ![React](https://img.shields.io/badge/-React-333333?style=for-the-badge&logo=react&logoColor=61dbfb)
 ![Typescript](https://img.shields.io/badge/-Typescript-333333?style=for-the-badge&logo=typescript&logoColor=61dbfb)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-333333?style=for-the-badge&logo=bootstrap&logoColor=61dbfb)
-![CSS](https://img.shields.io/badge/-CSS-333333?style=for-the-badge&logo=css&logoColor=61dbfb)
 
 **An NFT minter using NFTPort as the minter and contracts protocol**
 
