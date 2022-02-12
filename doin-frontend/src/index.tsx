@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ChainId, Config, DAppProvider } from "@usedapp/core";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const config: Config = {
   supportedChains: [ChainId.Rinkeby, 97],
