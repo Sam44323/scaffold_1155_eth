@@ -3,6 +3,8 @@ import { Form, Button } from "react-bootstrap";
 import styles from "../styles/pages/AddNft.module.css";
 import { PinataAxios, NftPortAxios } from "../helpers/axios";
 import { toast } from "react-toastify";
+import { useEthers } from "@usedapp/core";
+import { useNavigate } from "react-router-dom";
 
 const AddNft: React.FC = () => {
   const [formData, setFormData] = React.useState({
@@ -10,6 +12,9 @@ const AddNft: React.FC = () => {
     image: "",
     description: "",
   });
+  const navigate = useNavigate();
+
+  const { account } = useEthers();
 
   const handleMinting = async (event: FormEvent) => {
     event.preventDefault();
@@ -18,24 +23,34 @@ const AddNft: React.FC = () => {
         autoClose: false,
       });
 
-      const response = await PinataAxios.post(
+      let response = await PinataAxios.post(
         "/pinJSONToIPFS",
         JSON.stringify(formData)
       );
-      console.log("Response", response);
+      console.log("IPFS", response);
       toast.dismiss();
-      toast.info("Minting in progress...", {
-        autoClose: false,
-      });
       toast.success("Pinned the metadata to IPFS!", { autoClose: 1000 });
       toast.info("NFT minting in progress...", {
         autoClose: false,
+      });
+      response = await NftPortAxios.post("/urls", {
+        chain: "rinkeby",
+        name: formData.name,
+        description: formData.description,
+        file_url: `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`,
+        mint_to_address: account!,
+      });
+      console.log("NFT", response.data);
+      toast.dismiss();
+      toast.success("Success in minting NFT...", {
+        autoClose: 1000,
       });
       setFormData({
         name: "",
         image: "",
         description: "",
       });
+      navigate("/");
     } catch (err) {
       console.log(err);
       toast.error("Error while pinning the metadata for NFT!");
