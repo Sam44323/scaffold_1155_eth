@@ -1,14 +1,14 @@
 import React from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { useEthers } from "@usedapp/core";
 import { toast } from "react-toastify";
 
 const Header: React.FC = () => {
-  const [accountData, setAccountData] = React.useState<any>(null); // storing account data
+  const [accountData, setAccountData] = React.useState<any>(null);
+  const navigate = useNavigate();
 
   const { account, activateBrowserWallet, chainId } = useEthers();
-
-  // storing the balance shown in the header
 
   React.useEffect(() => {
     setAccountData(account);
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
     <Navbar bg="dark" expand="xxl">
       <Container>
         <Navbar.Brand
-          href="#home"
+          onClick={() => navigate("/")}
           style={{
             color: "#fff",
           }}
@@ -32,20 +32,20 @@ const Header: React.FC = () => {
 
         <Nav className="me-auto">
           <Nav.Link
-            href="#home"
+            onClick={() => navigate("/")}
             style={{
               color: "white",
             }}
           >
-            Home
+            Explore
           </Nav.Link>
           <Nav.Link
-            href="#link"
+            onClick={() => navigate("/user")}
             style={{
               color: "white",
             }}
           >
-            Link
+            User
           </Nav.Link>
         </Nav>
       </Container>
