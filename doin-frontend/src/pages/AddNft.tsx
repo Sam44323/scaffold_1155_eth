@@ -1,9 +1,8 @@
 import React, { FormEvent } from "react";
 import { Form, Button } from "react-bootstrap";
 import styles from "../styles/pages/AddNft.module.css";
-import Axios from "../helpers/axios";
+import { PinataAxios, NftPortAxios } from "../helpers/axios";
 import { toast } from "react-toastify";
-import axios from "axios";
 
 const AddNft: React.FC = () => {
   const [formData, setFormData] = React.useState({
@@ -15,15 +14,23 @@ const AddNft: React.FC = () => {
   const handleMinting = async (event: FormEvent) => {
     event.preventDefault();
     try {
-      toast.info("Minting...");
+      toast.info("Pining in progress...", {
+        autoClose: false,
+      });
 
-      const response = await Axios.post(
+      const response = await PinataAxios.post(
         "/pinJSONToIPFS",
         JSON.stringify(formData)
       );
       console.log("Response", response);
       toast.dismiss();
-      toast.success("Pinned the metadata to IPFS!");
+      toast.info("Minting in progress...", {
+        autoClose: false,
+      });
+      toast.success("Pinned the metadata to IPFS!", { autoClose: 1000 });
+      toast.info("NFT minting in progress...", {
+        autoClose: false,
+      });
       setFormData({
         name: "",
         image: "",

@@ -1,11 +1,18 @@
 import axios from "axios";
 
-const customAxios = axios.create({
-  baseURL: "https://api.pinata.cloud/pinning",
+const PinataAxios = axios.create({
+  baseURL: "https://api.pinata.cloud/pinning/pinJSONToIPFS",
   headers: {
     pinata_api_key: process.env.REACT_APP_PINATA_API_KEY!,
     pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_KEY!,
   },
 });
 
-export default customAxios;
+const NftPortAxios = axios.create({
+  baseURL: "https://api.nftport.xyz/v0/mints/easy/files",
+  headers: {
+    Authorization: process.env.REACT_APP_NFTPORT_API!,
+  },
+});
+
+export { PinataAxios, NftPortAxios };
